@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { mq } from '../common/mediaQueries.js';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
     faHotTub,
@@ -27,6 +28,15 @@ export default Header;
 const HeaderStyled = styled.header`
     /* background-color: #69bfe0; */
     background-color: teal;
+
+    @media ${mq.tablet} {
+        background-color: orange;
+    }
+
+    @media ${mq.desktop} {
+        background-color: purple;
+    }
+
     font-size: 30px;
 
     .row-container {
