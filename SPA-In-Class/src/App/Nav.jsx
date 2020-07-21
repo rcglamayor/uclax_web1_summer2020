@@ -1,16 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { mq } from '../common/mediaQueries.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+    faBars,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Nav = () => {
+
+    const [showMenu, showMenuSet] = useState(false);
+    const toggleMenu = () => {
+        console.log('burger click', showMenu)
+        showMenuSet(!showMenu);
+    }
+
+    useEffect(()=>{
+        console.log('useEffect is here');
+
+        const handleWindowSizeChange = () => {
+            const isItMobile = window.matchMedia(`(max-width:499px)`);
+            console.log(isItMobile.matches);
+
+            showMenuSet(!isItMobile.matches);
+        }
+
+        handleWindowSizeChange();
+
+        window.addEventListener('resize', handleWindowSizeChange);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+
+    },[]);
+
     return (
         <NavStyled>
             <div className="nested-wrapper">
-                <NavLink to="/" exact>Welcome</NavLink>
-                <NavLink to="/services">Services</NavLink>
-                <NavLink to="/contact">Contact</NavLink>
-                <NavLink to="/login">Login</NavLink>
+                <div className="hamburger" onClick={ toggleMenu } >
+                    <FontAwesomeIcon icon={ faBars } />
+                </div>
+                {
+                    showMenu &&
+                    <div className="links">
+                        <NavLink to="/" exact>Welcome</NavLink>
+                        <NavLink to="/services">Services</NavLink>
+                        <NavLink to="/contact">Contact</NavLink>
+                        <NavLink to="/login">Login</NavLink>
+                    </div>
+                }
             </div>
         </NavStyled>
     );
@@ -23,6 +62,25 @@ const NavStyled = styled.nav`
     background-color: teal;
     color: #fff;
     text-align: center;
+
+    .hamburger {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        cursor: pointer;
+
+        svg {
+            width: 40px;
+            height: auto;
+            color: #044d4d;
+        }
+
+        display: block;
+
+        @media ${mq.tablet} {
+            display: none;
+        }
+    }
 
     a {
         display: inline-block;
