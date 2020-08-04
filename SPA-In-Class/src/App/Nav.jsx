@@ -16,11 +16,11 @@ const Nav = () => {
     }
 
     useEffect(()=>{
-        console.log('useEffect is here');
+        // console.log('useEffect is here');
 
         const handleWindowSizeChange = () => {
             const isItMobile = window.matchMedia(`(max-width:499px)`);
-            console.log(isItMobile.matches);
+            // console.log(isItMobile.matches);
 
             showMenuSet(!isItMobile.matches);
         }
