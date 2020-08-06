@@ -10,7 +10,7 @@ const Tab = ({tabItem, chosenTabSet, chosenTab}) => {
     const theClassName = (tabItem.title === chosenTab.title) ? 'Tab active':'Tab';
 
     return (
-        <TabStyled className='Tab'
+        <TabStyled
             className={ theClassName }
             onClick={ handleClick }
         >
