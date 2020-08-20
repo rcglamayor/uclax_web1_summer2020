@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 /* Components ---------------------------*/
 import Tabbed from './Tabbed/Tabbed.jsx';
 import Staff from './Staff/Staff.jsx';
+import Slideshow from './Slideshow/Slideshow.jsx';
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
             <Helmet>
                 <title>Welcome :: SPA App</title>
             </Helmet>
+            <Slideshow />
             <div className="nested-wrapper">
                 <Tabbed />
             </div>

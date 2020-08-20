@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Helmet from 'react-helmet';
 
 /* Components ---------------------------*/
-import Deets from './Contact/GoogleMap.jsx';
+import Deets from './Contact/Deets.jsx';
 import ContactForm from './Contact/ContactForm.jsx';
 import GoogleMap from './Contact/GoogleMap.jsx';
 
